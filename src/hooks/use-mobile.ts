@@ -1,23 +1,30 @@
-"use client";
-
 import * as React from "react";
 
 const MOBILE_BREAKPOINT = 768;
 
 export function useIsMobile() {
-  const [isMobile, setIsMobile] = React.useState<boolean | undefined>(
-    undefined
-  );
+  const [isMobile, setIsMobile] = React.useState(false);
 
   React.useEffect(() => {
-    const mql = window.matchMedia(`(max-width: ${MOBILE_BREAKPOINT - 1}px)`);
-    const onChange = () => {
+    // garante que só roda no client
+    if (typeof window === "undefined") return;
+
+    const checkIsMobile = () => {
       setIsMobile(window.innerWidth < MOBILE_BREAKPOINT);
     };
-    mql.addEventListener("change", onChange);
-    setIsMobile(window.innerWidth < MOBILE_BREAKPOINT);
-    return () => mql.removeEventListener("change", onChange);
+
+    const mql = window.matchMedia(`(max-width: ${MOBILE_BREAKPOINT - 1}px)`);
+
+    // executa uma vez
+    checkIsMobile();
+
+    // escuta mudanças de tamanho
+    mql.addEventListener("change", checkIsMobile);
+
+    return () => {
+      mql.removeEventListener("change", checkIsMobile);
+    };
   }, []);
 
-  return !!isMobile;
+  return isMobile;
 }
