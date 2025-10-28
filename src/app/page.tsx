@@ -15,6 +15,7 @@ import Image from "next/image";
 import Link from "next/link";
 import { useState } from "react";
 import { LuGithub, LuLinkedin, LuMail } from "react-icons/lu";
+import { Resend } from "resend";
 
 export default function Page() {
   const [form, setForm] = useState({ nome: "", email: "", mensagem: "" });
@@ -30,14 +31,21 @@ export default function Page() {
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     setEnviando(true);
-    setStatus("");
+    setStatus("Enviando...");
 
-    // simulação de envio (exemplo)
-    setTimeout(() => {
-      setEnviando(false);
+    const res = await fetch("/api/contato", {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify(form),
+    });
+
+    if (res.ok) {
       setStatus("Mensagem enviada com sucesso!");
       setForm({ nome: "", email: "", mensagem: "" });
-    }, 1500);
+    } else {
+      setStatus("Erro ao enviar. Tente novamente.");
+    }
+    setEnviando(false);
   };
 
   return (
@@ -50,7 +58,7 @@ export default function Page() {
         </h2>
         <div className="flex gap-2 mt-5">
           <Button variant={"outline"} size={"icon-lg"}>
-            <Link href={"https://www.github.com/semog-dev"} target="blank">
+            <Link href={"https://www.github.com/semog-dev"} target="_blank">
               <LuGithub />
             </Link>
           </Button>
@@ -58,7 +66,7 @@ export default function Page() {
           <Button variant={"outline"} size={"icon-lg"}>
             <Link
               href={"https://www.linkedin.com/in/fernando-pereira-7172a6151/"}
-              target="blank"
+              target="_blank"
             >
               <LuLinkedin />
             </Link>
@@ -110,7 +118,9 @@ export default function Page() {
               na Integraltrust, onde estou atualmente.
             </p>
             <Button variant={"outline"}>
-              Baixar CV <DownloadIcon />{" "}
+              <Link href="/docs/curriculo.pdf" target="_blank" download>
+                Baixar CV <DownloadIcon />
+              </Link>
             </Button>
           </div>
         </div>
@@ -219,7 +229,7 @@ export default function Page() {
           </form>
 
           <div className="flex justify-center gap-4 pt-6">
-            <Link href="mailto:seuemail@exemplo.com" target="_blank">
+            <Link href="mailto:semogdev.pereira@hotmail.com" target="_blank">
               <Button variant="outline" size="icon">
                 <LuMail />
               </Button>
