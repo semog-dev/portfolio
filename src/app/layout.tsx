@@ -30,6 +30,11 @@ export default function RootLayout({
       >
         <MainMenuComponent />
         {children}
+        <footer className="flex justify-end items-end my-5">
+          <p className="text-secondary">
+            Este site foi desenvolvido por smog-dev
+          </p>
+        </footer>
       </body>
     </html>
   );
