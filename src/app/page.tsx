@@ -95,7 +95,7 @@ export default function Page() {
 
         <div className="flex gap-4 mt-4">
           <Image
-            src={"/images/foto.enc"}
+            src={"/images/foto.jpg"}
             alt="Foto de perfil"
             width={400}
             height={400}
@@ -118,7 +118,12 @@ export default function Page() {
               na Integraltrust, onde estou atualmente.
             </p>
             <Button variant={"outline"}>
-              <Link href="/docs/curriculo.pdf" target="_blank" download>
+              <Link
+                href="/docs/curriculo.pdf"
+                target="_blank"
+                download
+                className="flex items-center gap-2"
+              >
                 Baixar CV <DownloadIcon />
               </Link>
             </Button>
