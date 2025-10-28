@@ -118,14 +118,15 @@ export default function Page() {
               na Integraltrust, onde estou atualmente.
             </p>
             <Button variant={"outline"}>
-              <Link
+              <a
                 href="/docs/curriculo.pdf"
                 target="_blank"
+                rel="noopener"
                 download
                 className="flex items-center gap-2"
               >
                 Baixar CV <DownloadIcon />
-              </Link>
+              </a>
             </Button>
           </div>
         </div>
