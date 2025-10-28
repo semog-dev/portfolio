@@ -32,20 +32,65 @@ export function MainMenuComponent() {
           </Button>
         </DropdownMenuTrigger>
         <DropdownMenuContent>
-          <DropdownMenuItem asChild>
-            <Link href={"#home"}>Início</Link>
+          <DropdownMenuItem>
+            <a
+              href={"#home"}
+              onClick={(e) => {
+                e.preventDefault(); // previne o comportamento padrão
+                const el = document.getElementById("home");
+                el?.scrollIntoView({ behavior: "smooth" });
+              }}
+            >
+              Início
+            </a>
           </DropdownMenuItem>
-          <DropdownMenuItem asChild>
-            <Link href={"#about"}>Sobre</Link>
+          <DropdownMenuItem>
+            <a
+              href={"#about"}
+              onClick={(e) => {
+                e.preventDefault(); // previne o comportamento padrão
+                const el = document.getElementById("about");
+                el?.scrollIntoView({ behavior: "smooth" });
+              }}
+            >
+              Sobre
+            </a>
           </DropdownMenuItem>
-          <DropdownMenuItem asChild>
-            <Link href={"#experience"}>Experiência</Link>
+          <DropdownMenuItem>
+            <a
+              href={"#experience"}
+              onClick={(e) => {
+                e.preventDefault(); // previne o comportamento padrão
+                const el = document.getElementById("experience");
+                el?.scrollIntoView({ behavior: "smooth" });
+              }}
+            >
+              Experiência
+            </a>
           </DropdownMenuItem>
-          <DropdownMenuItem asChild>
-            <Link href={"#skills"}>Competências</Link>
+          <DropdownMenuItem>
+            <a
+              href={"#skills"}
+              onClick={(e) => {
+                e.preventDefault(); // previne o comportamento padrão
+                const el = document.getElementById("skills");
+                el?.scrollIntoView({ behavior: "smooth" });
+              }}
+            >
+              Competências
+            </a>
           </DropdownMenuItem>
-          <DropdownMenuItem asChild>
-            <Link href={"#contact"}>Contato</Link>
+          <DropdownMenuItem>
+            <a
+              href={"#contact"}
+              onClick={(e) => {
+                e.preventDefault(); // previne o comportamento padrão
+                const el = document.getElementById("contact");
+                el?.scrollIntoView({ behavior: "smooth" });
+              }}
+            >
+              Contato
+            </a>
           </DropdownMenuItem>
         </DropdownMenuContent>
       </DropdownMenu>

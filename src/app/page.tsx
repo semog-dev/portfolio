@@ -50,7 +50,7 @@ export default function Page() {
 
   return (
     <div>
-      <div id="home" className="mt-4">
+      <section id="home" className="mt-4">
         <h1 className="text-xl">Olá, meu nome é Fernando</h1>
         <h2 className="text-7xl font-black">
           Desenvolvedor Fullstack com ênfase na plataforma{" "}
@@ -72,9 +72,9 @@ export default function Page() {
             </Link>
           </Button>
         </div>
-      </div>
+      </section>
 
-      <div id="about" className="mt-4">
+      <section id="about" className="mt-4">
         <h1 className="text-xl">Sobre mim</h1>
         <div className="flex gap-4">
           <h2 className="text-7xl font-black">
@@ -130,9 +130,9 @@ export default function Page() {
             </Button>
           </div>
         </div>
-      </div>
+      </section>
 
-      <div id="experience" className="mt-4">
+      <section id="experience" className="mt-4">
         <h1 className="text-xl">Experiência</h1>
         <div className="flex gap-4 mt-2">
           <Card>
@@ -166,9 +166,9 @@ export default function Page() {
             </CardContent>
           </Card>
         </div>
-      </div>
+      </section>
 
-      <div id="skills" className="mt-4">
+      <section id="skills" className="mt-4">
         <h1 className="text-xl">Competências</h1>
         <div className="mt-2">
           <ul className="flex gap-4">
@@ -180,10 +180,10 @@ export default function Page() {
             <li>NextJS</li>
           </ul>
         </div>
-      </div>
+      </section>
 
-      <div id="contact" className="mt-4">
-        <section className="max-w-2xl mx-auto p-6 space-y-8">
+      <section id="contact" className="mt-4">
+        <div className="max-w-2xl mx-auto p-6 space-y-8">
           <header className="text-center space-y-2">
             <h1 className="text-4xl font-bold">Entre em Contato</h1>
             <p className="text-muted-foreground">
@@ -254,8 +254,8 @@ export default function Page() {
               </Button>
             </Link>
           </div>
-        </section>
-      </div>
+        </div>
+      </section>
     </div>
   );
 }
