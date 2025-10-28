@@ -26,13 +26,13 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body
-        className={`${geistSans.className} antialiased dark max-w-7xl mx-auto`}
+        className={`${geistSans.className} antialiased dark max-w-7xl mx-auto p-1`}
       >
         <MainMenuComponent />
         {children}
         <footer className="flex justify-end items-end my-5">
           <p className="text-secondary">
-            Este site foi desenvolvido por smog-dev
+            Este site foi desenvolvido por semog-dev
           </p>
         </footer>
       </body>

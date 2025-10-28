@@ -52,7 +52,7 @@ export default function Page() {
     <div>
       <section id="home" className="mt-4">
         <h1 className="text-xl">Olá, meu nome é Fernando</h1>
-        <h2 className="text-7xl font-black">
+        <h2 className="text-3xl font-black md:text-7xl">
           Desenvolvedor Fullstack com ênfase na plataforma{" "}
           <span className="text-red-500">.NET</span>
         </h2>
@@ -76,8 +76,8 @@ export default function Page() {
 
       <section id="about" className="mt-4">
         <h1 className="text-xl">Sobre mim</h1>
-        <div className="flex gap-4">
-          <h2 className="text-7xl font-black">
+        <div className="text-3xl flex gap-4 flex-col md:flex-row">
+          <h2 className="font-black md:text-7xl">
             Minha Jornada como{" "}
             <span className="text-red-500">Desenvolvedor</span>
           </h2>
@@ -93,7 +93,7 @@ export default function Page() {
           </div>
         </div>
 
-        <div className="flex gap-4 mt-4">
+        <div className="flex gap-4 mt-4 flex-col md:flex-row">
           <Image
             src={"/images/foto.jpg"}
             alt="Foto de perfil"
@@ -134,7 +134,7 @@ export default function Page() {
 
       <section id="experience" className="mt-4">
         <h1 className="text-xl">Experiência</h1>
-        <div className="flex gap-4 mt-2">
+        <div className="flex gap-4 mt-2 flex-col md:flex-row">
           <Card>
             <CardHeader>
               <CardTitle>Soft Clever</CardTitle>
