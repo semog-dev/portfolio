@@ -42,7 +42,7 @@ export default function Page() {
 
   return (
     <div>
-      <div className="mt-4">
+      <div id="home" className="mt-4">
         <h1 className="text-xl">Olá, meu nome é Fernando</h1>
         <h2 className="text-7xl font-black">
           Desenvolvedor Fullstack com ênfase na plataforma{" "}
@@ -66,7 +66,7 @@ export default function Page() {
         </div>
       </div>
 
-      <div className="mt-4">
+      <div id="about" className="mt-4">
         <h1 className="text-xl">Sobre mim</h1>
         <div className="flex gap-4">
           <h2 className="text-7xl font-black">
@@ -79,7 +79,9 @@ export default function Page() {
               Paulo, dedicado a criar experiências digitais que não apenas são
               amigáveis ao usuário, mas também altamente eficientes.
             </p>
-            <Button variant={"outline"}>Entre em contato comigo</Button>
+            <Button variant={"outline"}>
+              <Link href={"#contact"}>Entre em contato comigo</Link>
+            </Button>
           </div>
         </div>
 
@@ -114,7 +116,7 @@ export default function Page() {
         </div>
       </div>
 
-      <div className="mt-4">
+      <div id="experience" className="mt-4">
         <h1 className="text-xl">Experiência</h1>
         <div className="flex gap-4 mt-2">
           <Card>
@@ -150,7 +152,7 @@ export default function Page() {
         </div>
       </div>
 
-      <div className="mt-4">
+      <div id="skills" className="mt-4">
         <h1 className="text-xl">Competências</h1>
         <div className="mt-2">
           <ul className="flex gap-4">
@@ -164,7 +166,7 @@ export default function Page() {
         </div>
       </div>
 
-      <div className="mt-4">
+      <div id="contact" className="mt-4">
         <section className="max-w-2xl mx-auto p-6 space-y-8">
           <header className="text-center space-y-2">
             <h1 className="text-4xl font-bold">Entre em Contato</h1>
