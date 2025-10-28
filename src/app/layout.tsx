@@ -26,11 +26,9 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body
-        className={`${geistSans.variable} ${geistMono.variable} antialiased dark`}
+        className={`${geistSans.className} antialiased dark max-w-7xl mx-auto`}
       >
-        <header className="flex items-center justify-center">
-          <MainMenuComponent />
-        </header>
+        <MainMenuComponent />
         {children}
       </body>
     </html>
