@@ -1,5 +1,4 @@
-"use client";
-
+import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
 import {
   Card,
@@ -8,46 +7,27 @@ import {
   CardHeader,
   CardTitle,
 } from "@/components/ui/card";
-import { Input } from "@/components/ui/input";
-import { Textarea } from "@/components/ui/textarea";
 import { DownloadIcon } from "lucide-react";
 import Image from "next/image";
 import Link from "next/link";
-import { useState } from "react";
-import { LuGithub, LuLinkedin, LuMail } from "react-icons/lu";
-import { Resend } from "resend";
+import { LuGithub, LuLinkedin } from "react-icons/lu";
+
+const skillGroups = [
+  {
+    category: "Backend",
+    skills: [".NET", "C#", "Entity Framework", "SQL Server", "RabbitMQ", "Delphi"],
+  },
+  {
+    category: "Frontend",
+    skills: ["Angular", "Next.js", "Flutter", "TypeScript", "HTML", "CSS"],
+  },
+  {
+    category: "Ferramentas",
+    skills: ["Git", "Docker", "SQL Server Management Studio", "Visual Studio"],
+  },
+];
 
 export default function Page() {
-  const [form, setForm] = useState({ nome: "", email: "", mensagem: "" });
-  const [enviando, setEnviando] = useState(false);
-  const [status, setStatus] = useState("");
-
-  const handleChange = (
-    e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>
-  ) => {
-    setForm({ ...form, [e.target.name]: e.target.value });
-  };
-
-  const handleSubmit = async (e: React.FormEvent) => {
-    e.preventDefault();
-    setEnviando(true);
-    setStatus("Enviando...");
-
-    const res = await fetch("/api/contato", {
-      method: "POST",
-      headers: { "Content-Type": "application/json" },
-      body: JSON.stringify(form),
-    });
-
-    if (res.ok) {
-      setStatus("Mensagem enviada com sucesso!");
-      setForm({ nome: "", email: "", mensagem: "" });
-    } else {
-      setStatus("Erro ao enviar. Tente novamente.");
-    }
-    setEnviando(false);
-  };
-
   return (
     <div>
       <section id="home" className="mt-4">
@@ -57,15 +37,14 @@ export default function Page() {
           <span className="text-red-500">.NET</span>
         </h2>
         <div className="flex gap-2 mt-5">
-          <Button variant={"outline"} size={"icon-lg"}>
-            <Link href={"https://www.github.com/semog-dev"} target="_blank">
+          <Button variant="outline" size="icon-lg" asChild>
+            <Link href="https://www.github.com/semog-dev" target="_blank">
               <LuGithub />
             </Link>
           </Button>
-
-          <Button variant={"outline"} size={"icon-lg"}>
+          <Button variant="outline" size="icon-lg" asChild>
             <Link
-              href={"https://www.linkedin.com/in/fernando-pereira-7172a6151/"}
+              href="https://www.linkedin.com/in/fernando-pereira-7172a6151/"
               target="_blank"
             >
               <LuLinkedin />
@@ -74,50 +53,53 @@ export default function Page() {
         </div>
       </section>
 
-      <section id="about" className="mt-4">
+      <section id="about" className="mt-12">
         <h1 className="text-xl">Sobre mim</h1>
         <div className="text-3xl flex gap-4 flex-col md:flex-row">
           <h2 className="font-black md:text-7xl">
             Minha Jornada como{" "}
             <span className="text-red-500">Desenvolvedor</span>
           </h2>
-          <div className="flex flex-col justify-between">
+          <div className="flex flex-col justify-between gap-4">
             <p className="text-xl">
               Eu sou Fernando Gomes, um Desenvolvedor Fullstack na cidade de São
               Paulo, dedicado a criar experiências digitais que não apenas são
               amigáveis ao usuário, mas também altamente eficientes.
             </p>
-            <Button variant={"outline"}>
-              <Link href={"#contact"}>Entre em contato comigo</Link>
+            <Button variant="outline" asChild>
+              <Link href="/contato">Entre em contato comigo</Link>
             </Button>
           </div>
         </div>
 
         <div className="flex gap-4 mt-4 flex-col md:flex-row">
           <Image
-            src={"/images/foto.jpg"}
+            src="/images/foto.jpg"
             alt="Foto de perfil"
             width={400}
             height={400}
             className="rounded-lg"
           />
-
-          <div className="flex flex-col justify-between">
+          <div className="flex flex-col justify-between gap-4">
             <p className="text-xl">
-              Desde criança me interesso por computadores, quando terminei o
-              ensino médio cursei técnico em informática com ênfase em
-              programação na ETEC Albert Einstein, porém por motivos pessoais
-              não concluí. Passaram-se alguns anos voltei para a ETEC para
-              cursar Técnico em Eletrônica, consegui alguns trabalhos nessa área
-              mas ainda minha paixão era a programação então cursei Análise e
-              desenvolvimento de sistemas na Faculdade Impacta onde consegui
-              minha primeira oportunidade em uma pequena empresa chamada
-              Softclever, trabalhei 6 meses como estagiário e 1 ano e meio como
-              programador junior, atuei na criação e manutenção de um ERP
-              utilizando Delphi e Firebird, logo em seguida comecei a trabalhar
-              na Integraltrust, onde estou atualmente.
+              Desde criança me interesso por computadores. Ao terminar o ensino
+              médio, cursei Técnico em Informática com ênfase em programação na
+              ETEC Albert Einstein, mas por motivos pessoais não concluí.
             </p>
-            <Button variant={"outline"}>
+            <p className="text-xl">
+              Alguns anos depois, retornei à ETEC para cursar Técnico em
+              Eletrônica e consegui alguns trabalhos nessa área. Ainda assim,
+              minha paixão pela programação falou mais alto e cursei Análise e
+              Desenvolvimento de Sistemas na Faculdade Impacta.
+            </p>
+            <p className="text-xl">
+              Foi lá que conquistei minha primeira oportunidade, na Softclever,
+              onde atuei por 6 meses como estagiário e 1 ano e meio como
+              programador júnior, desenvolvendo e mantendo um ERP com Delphi e
+              Firebird. Em seguida, ingressei na Integraltrust, onde atuo
+              atualmente.
+            </p>
+            <Button variant="outline" asChild>
               <a
                 href="/docs/curriculo.pdf"
                 target="_blank"
@@ -132,7 +114,7 @@ export default function Page() {
         </div>
       </section>
 
-      <section id="experience" className="mt-4">
+      <section id="experience" className="mt-12">
         <h1 className="text-xl">Experiência</h1>
         <div className="flex gap-4 mt-2 flex-col md:flex-row">
           <Card>
@@ -168,92 +150,21 @@ export default function Page() {
         </div>
       </section>
 
-      <section id="skills" className="mt-4">
+      <section id="skills" className="mt-12">
         <h1 className="text-xl">Competências</h1>
-        <div className="mt-2">
-          <ul className="flex gap-4">
-            <li>.NET</li>
-            <li>C#</li>
-            <li>Entity Framework</li>
-            <li>Git</li>
-            <li>Angular</li>
-            <li>NextJS</li>
-          </ul>
-        </div>
-      </section>
-
-      <section id="contact" className="mt-4">
-        <div className="max-w-2xl mx-auto p-6 space-y-8">
-          <header className="text-center space-y-2">
-            <h1 className="text-4xl font-bold">Entre em Contato</h1>
-            <p className="text-muted-foreground">
-              Fale comigo para oportunidades, colaborações ou apenas para dizer
-              olá 👋
-            </p>
-          </header>
-
-          <form onSubmit={handleSubmit} className="space-y-4">
-            <div>
-              <label className="text-sm font-medium">Nome</label>
-              <Input
-                name="nome"
-                placeholder="Seu nome"
-                value={form.nome}
-                onChange={handleChange}
-                required
-              />
+        <div className="flex flex-col gap-4 mt-2">
+          {skillGroups.map(({ category, skills }) => (
+            <div key={category} className="flex flex-col gap-2">
+              <span className="text-sm text-muted-foreground">{category}</span>
+              <div className="flex flex-wrap gap-2">
+                {skills.map((skill) => (
+                  <Badge key={skill} variant="outline">
+                    {skill}
+                  </Badge>
+                ))}
+              </div>
             </div>
-
-            <div>
-              <label className="text-sm font-medium">E-mail</label>
-              <Input
-                name="email"
-                type="email"
-                placeholder="seu@email.com"
-                value={form.email}
-                onChange={handleChange}
-                required
-              />
-            </div>
-
-            <div>
-              <label className="text-sm font-medium">Mensagem</label>
-              <Textarea
-                name="mensagem"
-                placeholder="Escreva sua mensagem..."
-                value={form.mensagem}
-                onChange={handleChange}
-                required
-              />
-            </div>
-
-            <Button type="submit" className="w-full" disabled={enviando}>
-              {enviando ? "Enviando..." : "Enviar mensagem"}
-            </Button>
-
-            {status && <p className="text-center text-green-500">{status}</p>}
-          </form>
-
-          <div className="flex justify-center gap-4 pt-6">
-            <Link href="mailto:semogdev.pereira@hotmail.com" target="_blank">
-              <Button variant="outline" size="icon">
-                <LuMail />
-              </Button>
-            </Link>
-            <Link href="https://github.com/semog-dev" target="_blank">
-              <Button variant="outline" size="icon">
-                <LuGithub />
-              </Button>
-            </Link>
-            <Link
-              href="https://www.linkedin.com/in/fernando-pereira-7172a6151/"
-              target="_blank"
-            >
-              <Button variant="outline" size="icon">
-                <LuLinkedin />
-              </Button>
-            </Link>
-          </div>
+          ))}
         </div>
       </section>
     </div>

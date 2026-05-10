@@ -1,15 +1,10 @@
 import type { Metadata } from "next";
-import { Geist, Geist_Mono } from "next/font/google";
+import { Geist } from "next/font/google";
 import "./globals.css";
 import { MainMenuComponent } from "@/components/main-menu.component";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
-  subsets: ["latin"],
-});
-
-const geistMono = Geist_Mono({
-  variable: "--font-geist-mono",
   subsets: ["latin"],
 });
 
@@ -24,12 +19,12 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en">
+    <html lang="en" className="scroll-smooth">
       <body
-        className={`${geistSans.className} antialiased dark max-w-7xl mx-auto p-1`}
+        className={`${geistSans.className} antialiased dark max-w-7xl mx-auto p-1 flex flex-col min-h-screen`}
       >
         <MainMenuComponent />
-        {children}
+        <main className="flex-1">{children}</main>
         <footer className="flex justify-end items-end my-5">
           <p className="text-secondary">
             Este site foi desenvolvido por semog-dev
