@@ -11,9 +11,20 @@ import { Button } from "./ui/button";
 import { MenuIcon } from "lucide-react";
 import { useEffect } from "react";
 
+const navItems = [
+  { label: "Início", id: "home" },
+  { label: "Sobre", id: "about" },
+  { label: "Experiência", id: "experience" },
+  { label: "Competências", id: "skills" },
+  { label: "Contato", id: "contact" },
+];
+
+function scrollToSection(id: string) {
+  document.getElementById(id)?.scrollIntoView({ behavior: "smooth" });
+}
+
 export function MainMenuComponent() {
   useEffect(() => {
-    // habilita scroll suave globalmente (opcional)
     document.documentElement.style.scrollBehavior = "smooth";
   }, []);
 
@@ -32,66 +43,11 @@ export function MainMenuComponent() {
           </Button>
         </DropdownMenuTrigger>
         <DropdownMenuContent>
-          <DropdownMenuItem>
-            <a
-              href={"#home"}
-              onClick={(e) => {
-                e.preventDefault(); // previne o comportamento padrão
-                const el = document.getElementById("home");
-                el?.scrollIntoView({ behavior: "smooth" });
-              }}
-            >
-              Início
-            </a>
-          </DropdownMenuItem>
-          <DropdownMenuItem>
-            <a
-              href={"#about"}
-              onClick={(e) => {
-                e.preventDefault(); // previne o comportamento padrão
-                const el = document.getElementById("about");
-                el?.scrollIntoView({ behavior: "smooth" });
-              }}
-            >
-              Sobre
-            </a>
-          </DropdownMenuItem>
-          <DropdownMenuItem>
-            <a
-              href={"#experience"}
-              onClick={(e) => {
-                e.preventDefault(); // previne o comportamento padrão
-                const el = document.getElementById("experience");
-                el?.scrollIntoView({ behavior: "smooth" });
-              }}
-            >
-              Experiência
-            </a>
-          </DropdownMenuItem>
-          <DropdownMenuItem>
-            <a
-              href={"#skills"}
-              onClick={(e) => {
-                e.preventDefault(); // previne o comportamento padrão
-                const el = document.getElementById("skills");
-                el?.scrollIntoView({ behavior: "smooth" });
-              }}
-            >
-              Competências
-            </a>
-          </DropdownMenuItem>
-          <DropdownMenuItem>
-            <a
-              href={"#contact"}
-              onClick={(e) => {
-                e.preventDefault(); // previne o comportamento padrão
-                const el = document.getElementById("contact");
-                el?.scrollIntoView({ behavior: "smooth" });
-              }}
-            >
-              Contato
-            </a>
-          </DropdownMenuItem>
+          {navItems.map(({ label, id }) => (
+            <DropdownMenuItem key={id} onSelect={() => scrollToSection(id)}>
+              {label}
+            </DropdownMenuItem>
+          ))}
         </DropdownMenuContent>
       </DropdownMenu>
     </nav>
