@@ -20,6 +20,12 @@ export async function getPinnedProjects(): Promise<GithubData> {
                 name
                 description
                 url
+                stargazerCount
+                forkCount
+                primaryLanguage {
+                  name
+                  color
+                }
               }
             }
           }
