@@ -8,6 +8,11 @@ import { Component, input } from '@angular/core';
  */
 @Component({
   selector: 'app-brand-icon',
+  // Tailwind's preflight sets `svg { display: block }` globally, which makes
+  // the icon a block box and forces a line break between it and sibling text
+  // (e.g. inside a Material button's label). `inline-flex` on the host keeps
+  // this component itself an atomic inline box, side by side with text.
+  host: { style: 'display: inline-flex; align-items: center;' },
   template: `
     @switch (name()) {
       @case ('github') {
