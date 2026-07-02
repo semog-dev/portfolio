@@ -2,7 +2,7 @@
 @use 'mixins' as *;
 
 .about {
-  background-color: $color-white;
+  background-color: var(--surface-page);
   @include section-padding;
 }
 
@@ -23,7 +23,7 @@
   font-size: clamp(1.875rem, 4vw, 2.75rem);
   font-weight: 800;
   letter-spacing: -0.02em;
-  color: $color-gray-900;
+  color: var(--on-surface);
   margin: 0 0 1.25rem;
 }
 
@@ -34,7 +34,7 @@
 .about__intro {
   font-size: 1.125rem;
   line-height: 1.7;
-  color: $color-gray-700;
+  color: var(--on-surface-muted);
   max-width: 42rem;
   margin: 0 0 3rem;
 }
@@ -74,7 +74,7 @@
 .about__paragraph {
   font-size: 1rem;
   line-height: 1.75;
-  color: $color-gray-700;
+  color: var(--on-surface-muted);
   margin: 0;
 }
 

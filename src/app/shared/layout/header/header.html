@@ -17,6 +17,18 @@
       }
     </nav>
 
+    <button
+      type="button"
+      mat-icon-button
+      class="navbar__theme-toggle"
+      [attr.aria-label]="
+        themeService.theme() === 'dark' ? 'Ativar modo claro' : 'Ativar modo escuro'
+      "
+      (click)="themeService.toggle()"
+    >
+      <mat-icon>{{ themeService.theme() === 'dark' ? 'light_mode' : 'dark_mode' }}</mat-icon>
+    </button>
+
     <a mat-flat-button routerLink="/contato" class="navbar__cta">Fale comigo</a>
 
     <button
@@ -65,5 +77,10 @@
     <a mat-flat-button routerLink="/contato" class="navbar__drawer-cta" (click)="close()">
       Fale comigo
     </a>
+
+    <button type="button" class="navbar__drawer-theme-toggle" (click)="themeService.toggle()">
+      <mat-icon>{{ themeService.theme() === 'dark' ? 'light_mode' : 'dark_mode' }}</mat-icon>
+      {{ themeService.theme() === 'dark' ? 'Modo claro' : 'Modo escuro' }}
+    </button>
   </div>
 }

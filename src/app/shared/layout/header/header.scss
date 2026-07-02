@@ -15,28 +15,30 @@
 
   // Skin padrão: transparente sobre o hero escuro da Home, texto claro.
   // Skin "--scrolled": usado quando a Home foi rolada OU em qualquer outra
-  // rota (fundo claro desde o topo), fundo branco com sombra, texto escuro.
+  // rota (fundo claro desde o topo). Usa os tokens de superfície (que já
+  // seguem o toggle claro/escuro) em vez de branco fixo, com sombra.
   &--scrolled {
-    background-color: rgba(255, 255, 255, 0.97);
+    background-color: color-mix(in srgb, var(--surface-page) 97%, transparent);
     box-shadow: 0 1px 12px rgba(0, 0, 0, 0.08);
     padding: 0.75rem 0;
 
     .navbar__logo,
-    .navbar__toggle {
-      color: $color-gray-900;
+    .navbar__toggle,
+    .navbar__theme-toggle {
+      color: var(--on-surface);
     }
 
     .navbar__link {
-      color: $color-gray-700;
+      color: var(--on-surface-muted);
 
       &:hover {
-        color: $color-gray-900;
-        background-color: $color-gray-100;
+        color: var(--on-surface);
+        background-color: var(--border-subtle);
       }
 
       &--active {
         color: $color-primary;
-        background-color: $color-gray-100;
+        background-color: var(--border-subtle);
       }
     }
 
@@ -136,6 +138,11 @@
   }
 }
 
+.navbar__theme-toggle {
+  color: $color-white;
+  transition: color 0.3s ease;
+}
+
 // Menu mobile (drawer)
 .navbar__backdrop {
   position: fixed;
@@ -157,7 +164,7 @@
   width: 80%;
   max-width: 20rem;
   padding: 1rem;
-  background-color: $color-white;
+  background-color: var(--surface-page);
   box-shadow: -4px 0 24px rgba(0, 0, 0, 0.12);
   animation: navbar-drawer-in 0.25s ease-out;
 }
@@ -166,11 +173,11 @@
   display: flex;
   justify-content: flex-end;
   margin-bottom: 1rem;
-  color: $color-gray-900;
+  color: var(--on-surface);
 }
 
 .navbar__drawer-link {
-  color: $color-gray-700;
+  color: var(--on-surface-muted);
   text-decoration: none;
   font-size: 1rem;
   font-weight: 500;
@@ -181,13 +188,13 @@
     background-color 0.2s ease;
 
   &:hover {
-    color: $color-gray-900;
-    background-color: $color-gray-100;
+    color: var(--on-surface);
+    background-color: var(--border-subtle);
   }
 
   &--active {
     color: $color-primary;
-    background-color: $color-gray-100;
+    background-color: var(--border-subtle);
   }
 }
 
@@ -196,6 +203,30 @@
   background-color: $color-primary !important;
   color: $color-white !important;
   font-weight: 700 !important;
+}
+
+.navbar__drawer-theme-toggle {
+  display: flex;
+  align-items: center;
+  gap: 0.625rem;
+  margin-top: 0.5rem;
+  padding: 0.625rem 0.75rem;
+  border: none;
+  border-radius: 0.5rem;
+  background: none;
+  color: var(--on-surface-muted);
+  font-size: 1rem;
+  font-weight: 500;
+  font-family: inherit;
+  cursor: pointer;
+  transition:
+    color 0.2s ease,
+    background-color 0.2s ease;
+
+  &:hover {
+    color: var(--on-surface);
+    background-color: var(--border-subtle);
+  }
 }
 
 @keyframes navbar-backdrop-in {

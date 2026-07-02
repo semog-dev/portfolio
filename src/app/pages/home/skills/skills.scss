@@ -3,7 +3,7 @@
 @use 'mixins' as *;
 
 .skills {
-  background-color: $color-white;
+  background-color: var(--surface-page);
   @include section-padding;
 }
 
@@ -24,7 +24,7 @@
   font-size: clamp(1.875rem, 4vw, 2.75rem);
   font-weight: 800;
   letter-spacing: -0.02em;
-  color: $color-gray-900;
+  color: var(--on-surface);
   margin: 0 0 3rem;
 }
 
@@ -39,7 +39,7 @@
   font-weight: 700;
   letter-spacing: 0.1em;
   text-transform: uppercase;
-  color: $color-gray-700;
+  color: var(--on-surface-muted);
   margin: 0 0 1rem;
 }
 
@@ -59,7 +59,13 @@
 
   @each $variant, $colors in $card-colors {
     &--#{$variant} {
-      background-color: map.get($colors, bg);
+      // Pastel light bg has no hand-authored dark counterpart in the
+      // $card-colors map — derive one from the same icon-color instead of
+      // hardcoding a second palette, so it stays legible on a dark surface.
+      background-color: light-dark(
+        #{map.get($colors, bg)},
+        color-mix(in srgb, #{map.get($colors, icon-color)} 22%, #0f172a)
+      );
       color: map.get($colors, icon-color);
 
       &:hover {

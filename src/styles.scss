@@ -21,9 +21,11 @@ html {
 }
 
 body {
-  // Default the application to a light color theme. This can be changed to
-  // `dark` to enable the dark color theme, or to `light dark` to defer to the
-  // user's system settings.
+  // Defaults to light; `ThemeService` toggles the `dark` class on <html>,
+  // which flips this to `dark` below. Angular Material's own system tokens
+  // (--mat-sys-*) already resolve through the CSS light-dark() function keyed
+  // off this property, so this single switch drives Material *and* our own
+  // tokens below at once — no per-component light/dark logic needed.
   color-scheme: light;
 
   // Set a default background, font and text colors for the application using
@@ -36,4 +38,24 @@ body {
   // Reset the user agent margin.
   margin: 0;
   height: 100%;
+}
+
+html.dark body {
+  color-scheme: dark;
+}
+
+// Semantic surface tokens for our own (non-Material) components — the light
+// sections (Sobre/Experiência/Skills/Projetos/404/scrolled header/contact
+// card) read these instead of hardcoded colors, so they follow the same
+// light-dark() switch as Material above. The always-navy brand sections
+// (hero/footer/contato background) are intentionally not tokenized here —
+// they stay a constant brand color in both modes.
+:root {
+  --surface-page: light-dark(#ffffff, #0f172a);
+  --surface-page-tint: light-dark(#f9fafb, #131c2e);
+  --surface-page-alt: light-dark(#f0f7ff, #16213a);
+  --surface-card: light-dark(#ffffff, #1e293b);
+  --border-subtle: light-dark(#f3f4f6, rgba(255, 255, 255, 0.08));
+  --on-surface: light-dark(#111827, #f1f5f9);
+  --on-surface-muted: light-dark(#374151, #94a3b8);
 }

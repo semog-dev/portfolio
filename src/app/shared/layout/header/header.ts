@@ -5,6 +5,7 @@ import { MatIconModule } from '@angular/material/icon';
 import { NavigationEnd, Router, RouterLink, RouterLinkActive } from '@angular/router';
 import { filter, map } from 'rxjs';
 import { navItems } from '../../data/content';
+import { ThemeService } from '../../services/theme.service';
 
 @Component({
   selector: 'app-header',
@@ -14,6 +15,7 @@ import { navItems } from '../../data/content';
 })
 export class Header {
   private readonly router = inject(Router);
+  protected readonly themeService = inject(ThemeService);
 
   protected readonly navItems = navItems;
   protected readonly open = signal(false);
