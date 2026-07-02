@@ -1,38 +1,35 @@
-import { join } from "node:path";
+import { join } from 'node:path';
 import {
   AngularNodeAppEngine,
   createNodeRequestHandler,
   isMainModule,
   writeResponseToNodeResponse,
-} from "@angular/ssr/node";
-import express from "express";
+} from '@angular/ssr/node';
+import express from 'express';
+import { contatoRouter } from './server/routes/contato';
+import { projetosRouter } from './server/routes/projetos';
 
-const browserDistFolder = join(import.meta.dirname, "../browser");
+const browserDistFolder = join(import.meta.dirname, '../browser');
 
 const app = express();
 const angularApp = new AngularNodeAppEngine();
 
 /**
- * Example Express Rest API endpoints can be defined here.
- * Uncomment and define endpoints as necessary.
- *
- * Example:
- * ```ts
- * app.get('/api/{*splat}', (req, res) => {
- *   // Handle API request
- * });
- * ```
+ * API routes
  */
+app.use(express.json());
+app.use('/api/contato', contatoRouter);
+app.use('/api/projetos', projetosRouter);
 
 /**
  * Serve static files from /browser
  */
 app.use(
   express.static(browserDistFolder, {
-    maxAge: "1y",
+    maxAge: '1y',
     index: false,
     redirect: false,
-  }),
+  })
 );
 
 /**
@@ -41,9 +38,7 @@ app.use(
 app.use((req, res, next) => {
   angularApp
     .handle(req)
-    .then((response) =>
-      response ? writeResponseToNodeResponse(response, res) : next(),
-    )
+    .then((response) => (response ? writeResponseToNodeResponse(response, res) : next()))
     .catch(next);
 });
 
@@ -51,8 +46,8 @@ app.use((req, res, next) => {
  * Start the server if this module is the main entry point, or it is ran via PM2.
  * The server listens on the port defined by the `PORT` environment variable, or defaults to 4000.
  */
-if (isMainModule(import.meta.url) || process.env["pm_id"]) {
-  const port = process.env["PORT"] || 4000;
+if (isMainModule(import.meta.url) || process.env['pm_id']) {
+  const port = process.env['PORT'] || 4000;
   app.listen(port, (error) => {
     if (error) {
       throw error;

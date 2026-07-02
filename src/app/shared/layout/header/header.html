@@ -1,0 +1,76 @@
+<header class="sticky top-0 z-40 border-b border-border bg-background/80 backdrop-blur-md">
+  <nav class="flex h-14 w-full items-center justify-between">
+    <a routerLink="/" (click)="close()" class="font-display text-2xl font-extrabold tracking-tight">
+      SEMOG<span class="text-accent">DEV</span>
+    </a>
+
+    <!-- Desktop nav -->
+    <ul class="hidden items-center gap-1 md:flex">
+      @for (item of navItems; track item.path) {
+        <li>
+          <a
+            [routerLink]="item.path"
+            routerLinkActive="bg-accent text-accent-foreground"
+            [routerLinkActiveOptions]="item.path === '/' ? { exact: true } : { exact: false }"
+            class="block rounded-md px-3 py-1.5 text-sm font-medium text-muted-foreground transition-colors hover:text-foreground"
+          >
+            {{ item.label }}
+          </a>
+        </li>
+      }
+    </ul>
+
+    <!-- Mobile hamburger -->
+    <button
+      type="button"
+      class="inline-flex items-center justify-center rounded-md p-2 text-foreground transition-colors hover:bg-surface md:hidden"
+      aria-label="Abrir menu"
+      [attr.aria-expanded]="open()"
+      (click)="toggle()"
+    >
+      <lucide-icon [img]="MenuIcon" [size]="22" />
+    </button>
+  </nav>
+</header>
+
+@if (open()) {
+  <div
+    class="fixed inset-0 z-50 animate-[header-backdrop-in_0.2s_ease-out] bg-black/50"
+    role="button"
+    tabindex="0"
+    aria-label="Fechar menu"
+    (click)="close()"
+    (keydown.enter)="close()"
+    (keydown.escape)="close()"
+  ></div>
+
+  <div
+    class="fixed inset-y-0 right-0 z-50 flex w-3/4 max-w-xs animate-[header-drawer-in_0.25s_ease-out] flex-col gap-1 border-l border-border bg-background p-4 shadow-xl"
+    role="dialog"
+    aria-modal="true"
+    aria-label="Menu de navegação"
+  >
+    <div class="mb-4 flex items-center justify-end">
+      <button
+        type="button"
+        class="inline-flex items-center justify-center rounded-md p-2 text-foreground transition-colors hover:bg-surface"
+        aria-label="Fechar menu"
+        (click)="close()"
+      >
+        <lucide-icon [img]="XIcon" [size]="22" />
+      </button>
+    </div>
+
+    @for (item of navItems; track item.path) {
+      <a
+        [routerLink]="item.path"
+        routerLinkActive="bg-accent text-accent-foreground"
+        [routerLinkActiveOptions]="item.path === '/' ? { exact: true } : { exact: false }"
+        class="rounded-md px-3 py-2 text-base font-medium text-muted-foreground transition-colors hover:text-foreground"
+        (click)="close()"
+      >
+        {{ item.label }}
+      </a>
+    }
+  </div>
+}

@@ -1,59 +1,54 @@
-# Portfolio
+# Portfolio — Fernando Gomes (semog-dev)
 
-This project was generated using [Angular CLI](https://github.com/angular/angular-cli) version 22.0.5.
+Site pessoal de portfólio de Fernando Gomes (semog-dev), construído com Angular 22 (SSR, zoneless, standalone components) e Tailwind CSS v4.
 
-## Development server
+## Sobre
 
-To start a local development server, run:
+Migração do antigo portfólio em Next.js para Angular. O projeto inclui uma feed de projetos consumida da API do GitHub e um formulário de contato que envia e-mail via Resend, ambos servidos por rotas `/api/*` que rodam junto do servidor SSR do Angular.
 
-```bash
-ng serve
-```
+## Rodando localmente
 
-Once the server is running, open your browser and navigate to `http://localhost:4200/`. The application will automatically reload whenever you modify any of the source files.
-
-## Code scaffolding
-
-Angular CLI includes powerful code scaffolding tools. To generate a new component, run:
+Instalar dependências:
 
 ```bash
-ng generate component component-name
+npm install
 ```
 
-For a complete list of available schematics (such as `components`, `directives`, or `pipes`), run:
+Servidor de desenvolvimento (hot reload, mas **sem** as rotas `/api/*`, que só existem no servidor SSR):
 
 ```bash
-ng generate --help
+npm start
 ```
 
-## Building
+Aplicação disponível em `http://localhost:4200/`.
 
-To build the project run:
+Para rodar a stack completa, incluindo as rotas de API (formulário de contato e feed de projetos do GitHub), gere o build de produção e execute o servidor SSR:
 
 ```bash
-ng build
+npm run build
+node dist/portfolio/server/server.mjs
 ```
 
-This will compile your project and store the build artifacts in the `dist/` directory. By default, the production build optimizes your application for performance and speed.
+O servidor sobe na porta definida pela variável de ambiente `PORT`, ou `4000` por padrão.
 
-## Running unit tests
-
-To execute unit tests with the [Vitest](https://vitest.dev/) test runner, use the following command:
+### Testes e lint
 
 ```bash
-ng test
+npm test        # testes unitários com Vitest (via ng test)
+npm run lint     # lint com Biome
 ```
 
-## Running end-to-end tests
+## Variáveis de ambiente
 
-For end-to-end (e2e) testing, run:
+Para que o formulário de contato e a feed de projetos do GitHub funcionem, defina as seguintes variáveis (veja `.env.example` para um modelo):
 
-```bash
-ng e2e
-```
+| Variável | Descrição |
+| --- | --- |
+| `GITHUB_API_TOKEN` | Token de acesso à API do GitHub, usado para buscar os projetos exibidos no portfólio. |
+| `RESEND_API_KEY` | Chave de API do [Resend](https://resend.com), usada para enviar os e-mails do formulário de contato. |
+| `RESEND_FROM` | Endereço de e-mail remetente configurado no Resend. |
+| `RESEND_TO` | Endereço de e-mail de destino das mensagens do formulário de contato. |
 
-Angular CLI does not come with an end-to-end testing framework by default. You can choose one that suits your needs.
+## Deploy
 
-## Additional Resources
-
-For more information on using the Angular CLI, including detailed command references, visit the [Angular CLI Overview and Command Reference](https://angular.dev/tools/cli) page.
+O deploy é feito na Vercel. Como ainda não há um adapter oficial de primeira parte para Angular SSR na Vercel, o projeto usa uma configuração manual com `api/index.js` (função serverless que delega para o servidor SSR do Angular) e `vercel.json` (roteamento e build).
