@@ -42,12 +42,12 @@ npm run lint     # lint com Biome
 
 Para que o formulário de contato e a feed de projetos do GitHub funcionem, defina as seguintes variáveis (veja `.env.example` para um modelo):
 
-| Variável | Descrição |
-| --- | --- |
-| `GITHUB_API_TOKEN` | Token de acesso à API do GitHub, usado para buscar os projetos exibidos no portfólio. |
-| `RESEND_API_KEY` | Chave de API do [Resend](https://resend.com), usada para enviar os e-mails do formulário de contato. |
-| `RESEND_FROM` | Endereço de e-mail remetente configurado no Resend. |
-| `RESEND_TO` | Endereço de e-mail de destino das mensagens do formulário de contato. |
+| Variável           | Descrição                                                                                            |
+| ------------------ | ---------------------------------------------------------------------------------------------------- |
+| `GITHUB_API_TOKEN` | Token de acesso à API do GitHub, usado para buscar os projetos exibidos no portfólio.                |
+| `RESEND_API_KEY`   | Chave de API do [Resend](https://resend.com), usada para enviar os e-mails do formulário de contato. |
+| `RESEND_FROM`      | Endereço de e-mail remetente configurado no Resend.                                                  |
+| `RESEND_TO`        | Endereço de e-mail de destino das mensagens do formulário de contato.                                |
 
 ## Deploy
 

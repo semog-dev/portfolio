@@ -1,114 +1,99 @@
-<section class="mx-auto max-w-2xl px-4 py-16 sm:py-24">
-  <header class="mb-10 text-center">
-    <h1 class="font-display text-3xl font-bold text-foreground sm:text-4xl">
-      {{ contatoPage.title }}
-    </h1>
-    <p class="mt-3 text-muted-foreground">{{ contatoPage.subtitle }}</p>
-  </header>
+<section class="contato">
+  <div class="contato__container">
+    <div class="contato__info">
+      <span class="contato__eyebrow">Vamos conversar</span>
+      <h1 class="contato__title">{{ contatoPage.title }}</h1>
+      <p class="contato__description">{{ contatoPage.subtitle }}</p>
 
-  <form class="flex flex-col gap-5" novalidate (submit)="onSubmit($event)">
-    <div class="flex flex-col gap-2">
-      <label for="nome" class="text-sm font-medium text-foreground"
-        >Nome</label
-      >
-      <input
-        id="nome"
-        type="text"
-        [formField]="contactForm.nome"
-        class="rounded-md border border-border bg-surface px-3 py-2 text-foreground outline-none focus:ring-2 focus:ring-accent"
-      />
-      @if (contactForm.nome().touched() && contactForm.nome().invalid()) {
-        <p class="text-sm text-accent">
-          {{ contactForm.nome().errors()[0]?.message }}
-        </p>
-      }
+      <div class="contato__contact">
+        <a class="contato__contact-item" [href]="'mailto:' + socialLinks.email">
+          <mat-icon>email</mat-icon>
+          <span>{{ socialLinks.email }}</span>
+        </a>
+        <a class="contato__contact-item" [href]="socialLinks.github" target="_blank" rel="noopener">
+          <app-brand-icon name="github" [size]="18" />
+          <span>GitHub</span>
+        </a>
+        <a
+          class="contato__contact-item"
+          [href]="socialLinks.linkedin"
+          target="_blank"
+          rel="noopener"
+        >
+          <app-brand-icon name="linkedin" [size]="18" />
+          <span>LinkedIn</span>
+        </a>
+      </div>
     </div>
 
-    <div class="flex flex-col gap-2">
-      <label for="email" class="text-sm font-medium text-foreground"
-        >E-mail</label
-      >
-      <input
-        id="email"
-        type="email"
-        [formField]="contactForm.email"
-        class="rounded-md border border-border bg-surface px-3 py-2 text-foreground outline-none focus:ring-2 focus:ring-accent"
-      />
-      @if (contactForm.email().touched() && contactForm.email().invalid()) {
-        <p class="text-sm text-accent">
-          {{ contactForm.email().errors()[0]?.message }}
-        </p>
+    <div class="contato__form-wrap">
+      @if (status() === 'success') {
+        <div class="contato__success">
+          <div class="contato__success-icon-wrap">
+            <mat-icon class="contato__success-icon">check_circle</mat-icon>
+          </div>
+          <h2 class="contato__success-title">{{ contatoPage.successMessage }}</h2>
+          <p class="contato__success-text">Obrigado pelo contato! Retorno assim que possível.</p>
+          <button mat-stroked-button type="button" class="contato__success-btn" (click)="reset()">
+            Enviar outra mensagem
+          </button>
+        </div>
+      } @else {
+        <form class="contato__form" novalidate (submit)="onSubmit($event)">
+          <mat-form-field appearance="outline" class="contato__field">
+            <mat-label>Nome</mat-label>
+            <input matInput [formField]="contactForm.nome" placeholder="Seu nome" />
+            <mat-icon matPrefix>person</mat-icon>
+            @if (contactForm.nome().touched() && contactForm.nome().invalid()) {
+              <mat-error>{{ contactForm.nome().errors()[0]?.message }}</mat-error>
+            }
+          </mat-form-field>
+
+          <mat-form-field appearance="outline" class="contato__field">
+            <mat-label>E-mail</mat-label>
+            <input
+              matInput
+              type="email"
+              [formField]="contactForm.email"
+              placeholder="voce@email.com"
+            />
+            <mat-icon matPrefix>email</mat-icon>
+            @if (contactForm.email().touched() && contactForm.email().invalid()) {
+              <mat-error>{{ contactForm.email().errors()[0]?.message }}</mat-error>
+            }
+          </mat-form-field>
+
+          <mat-form-field appearance="outline" class="contato__field">
+            <mat-label>Mensagem</mat-label>
+            <textarea
+              matInput
+              rows="5"
+              [formField]="contactForm.mensagem"
+              placeholder="Como posso ajudar?"
+            ></textarea>
+            <mat-icon matPrefix>notes</mat-icon>
+            @if (contactForm.mensagem().touched() && contactForm.mensagem().invalid()) {
+              <mat-error>{{ contactForm.mensagem().errors()[0]?.message }}</mat-error>
+            }
+          </mat-form-field>
+
+          <button
+            mat-flat-button
+            type="submit"
+            class="contato__submit"
+            [disabled]="status() === 'sending'"
+          >
+            <mat-icon [class.contato__submit-spinner]="status() === 'sending'">
+              {{ status() === 'sending' ? 'hourglass_top' : 'send' }}
+            </mat-icon>
+            {{ status() === 'sending' ? contatoPage.submittingLabel : contatoPage.submitLabel }}
+          </button>
+
+          @if (status() === 'error') {
+            <p class="contato__form-error">{{ contatoPage.errorMessage }}</p>
+          }
+        </form>
       }
     </div>
-
-    <div class="flex flex-col gap-2">
-      <label for="mensagem" class="text-sm font-medium text-foreground"
-        >Mensagem</label
-      >
-      <textarea
-        id="mensagem"
-        rows="5"
-        [formField]="contactForm.mensagem"
-        class="resize-none rounded-md border border-border bg-surface px-3 py-2 text-foreground outline-none focus:ring-2 focus:ring-accent"
-      ></textarea>
-      @if (
-        contactForm.mensagem().touched() && contactForm.mensagem().invalid()
-      ) {
-        <p class="text-sm text-accent">
-          {{ contactForm.mensagem().errors()[0]?.message }}
-        </p>
-      }
-    </div>
-
-    <button
-      type="submit"
-      [disabled]="status() === 'sending'"
-      class="mt-2 w-full rounded-md bg-accent px-4 py-2.5 font-medium text-accent-foreground transition hover:opacity-90 disabled:cursor-not-allowed disabled:opacity-60"
-    >
-      {{
-        status() === "sending"
-          ? contatoPage.submittingLabel
-          : contatoPage.submitLabel
-      }}
-    </button>
-
-    @if (status() === "success") {
-      <p class="text-center text-sm font-medium text-emerald-400">
-        {{ contatoPage.successMessage }}
-      </p>
-    }
-    @if (status() === "error") {
-      <p class="text-center text-sm font-medium text-accent">
-        {{ contatoPage.errorMessage }}
-      </p>
-    }
-  </form>
-
-  <div class="mt-10 flex justify-center gap-4">
-    <a
-      [href]="'mailto:' + socialLinks.email"
-      aria-label="Enviar e-mail"
-      class="flex h-11 w-11 items-center justify-center rounded-md border border-border text-muted-foreground transition hover:border-accent hover:text-accent"
-    >
-      <lucide-icon [img]="MailIcon" [size]="18" />
-    </a>
-    <a
-      [href]="socialLinks.github"
-      target="_blank"
-      rel="noopener"
-      aria-label="GitHub"
-      class="flex h-11 w-11 items-center justify-center rounded-md border border-border text-muted-foreground transition hover:border-accent hover:text-accent"
-    >
-      <lucide-icon [img]="GithubIcon" [size]="18" />
-    </a>
-    <a
-      [href]="socialLinks.linkedin"
-      target="_blank"
-      rel="noopener"
-      aria-label="LinkedIn"
-      class="flex h-11 w-11 items-center justify-center rounded-md border border-border text-muted-foreground transition hover:border-accent hover:text-accent"
-    >
-      <lucide-icon [img]="LinkedinIcon" [size]="18" />
-    </a>
   </div>
 </section>

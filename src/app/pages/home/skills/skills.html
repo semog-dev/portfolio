@@ -1,21 +1,22 @@
-<section class="px-6 py-24 md:px-12">
-  <h2 class="font-display text-3xl font-black text-foreground md:text-5xl">Competências</h2>
+<section class="skills">
+  <div class="skills__container">
+    <p class="skills__eyebrow">Stack</p>
+    <h2 class="skills__title">Competências</h2>
 
-  <div class="mt-10 flex flex-col gap-8">
-    @for (group of skillGroups; track group.category) {
-      <div>
-        <p class="text-sm font-semibold tracking-[0.15em] text-muted-foreground uppercase">
-          {{ group.category }}
-        </p>
+    <div class="skills__groups">
+      @for (group of skillGroups; track group.category) {
+        <div class="skills__group">
+          <p class="skills__category">{{ group.category }}</p>
 
-        <div class="mt-4 flex flex-wrap gap-3">
-          @for (skill of group.skills; track skill) {
-            <span class="rounded-full border border-border px-3 py-1 text-sm text-foreground">
-              {{ skill }}
-            </span>
-          }
+          <div class="skills__pills">
+            @for (skill of group.skills; track skill) {
+              <span class="skill-pill" [class]="'skill-pill--' + colorVariant(group.category)">
+                {{ skill }}
+              </span>
+            }
+          </div>
         </div>
-      </div>
-    }
+      }
+    </div>
   </div>
 </section>

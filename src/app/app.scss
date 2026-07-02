@@ -1,0 +1,12 @@
+// Shell raiz: cada página cuida do próprio fundo full-bleed e do próprio
+// container interno (@include container). Aqui só garantimos que o footer
+// fique colado na base em páginas com pouco conteúdo.
+:host {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+}
+
+main {
+  flex: 1 0 auto;
+}

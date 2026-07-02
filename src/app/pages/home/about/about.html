@@ -1,43 +1,36 @@
-<section class="px-6 py-24 md:px-12">
-  <div class="grid grid-cols-1 gap-12 md:grid-cols-[1.1fr_0.9fr] md:items-start">
-    <div class="flex flex-col gap-6">
-      <h2 class="font-display text-3xl font-black leading-tight text-foreground md:text-5xl">
-        {{ about.title }} <span class="text-accent">{{ about.titleAccent }}</span>
-      </h2>
+<section class="about">
+  <div class="about__container">
+    <p class="about__eyebrow">Sobre mim</p>
+    <h2 class="about__title">
+      {{ about.title }} <span class="about__title-accent">{{ about.titleAccent }}</span>
+    </h2>
+    <p class="about__intro">{{ about.intro }}</p>
 
-      <p class="max-w-xl text-lg text-muted-foreground">
-        {{ about.intro }}
-      </p>
+    <div class="about__grid">
+      <img [src]="about.photo" alt="Foto de perfil" class="about__photo" />
 
-      <a
-        routerLink="/contato"
-        class="inline-flex w-fit items-center rounded-md bg-accent px-6 py-3 text-sm font-semibold text-accent-foreground transition-opacity hover:opacity-90"
-      >
-        Entre em contato comigo
-      </a>
+      <div class="about__content">
+        @for (p of about.paragraphs; track p) {
+          <p class="about__paragraph">{{ p }}</p>
+        }
+
+        <div class="about__actions">
+          <a mat-stroked-button routerLink="/contato" class="about__btn-contact">
+            Entre em contato comigo
+          </a>
+          <a
+            mat-flat-button
+            class="about__btn-cv"
+            [href]="about.cvUrl"
+            download
+            target="_blank"
+            rel="noopener"
+          >
+            <mat-icon>download</mat-icon>
+            Baixar CV
+          </a>
+        </div>
+      </div>
     </div>
-
-    <img
-      [src]="about.photo"
-      alt="Foto de perfil"
-      class="aspect-square w-full max-w-sm rounded-lg border border-border object-cover md:justify-self-end"
-    />
-  </div>
-
-  <div class="mt-12 flex flex-col gap-6 md:max-w-3xl">
-    @for (p of about.paragraphs; track p) {
-      <p class="text-base leading-relaxed text-muted-foreground">{{ p }}</p>
-    }
-
-    <a
-      [href]="about.cvUrl"
-      download
-      target="_blank"
-      rel="noopener"
-      class="inline-flex w-fit items-center gap-2 rounded-md border border-border px-6 py-3 text-sm font-semibold text-foreground transition-colors hover:border-accent hover:text-accent"
-    >
-      <lucide-icon [img]="DownloadIcon" [size]="18" />
-      Baixar CV
-    </a>
   </div>
 </section>

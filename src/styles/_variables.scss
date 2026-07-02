@@ -26,7 +26,7 @@ $color-gray-900: #111827;
 $color-slate-400: #94a3b8;
 
 // Typography
-$font-family-base: "Roboto", sans-serif;
+$font-family-base: 'Roboto', sans-serif;
 $font-size-base: 1rem;
 $line-height-base: 1.6;
 
@@ -42,37 +42,37 @@ $bp-xl: 1280px;
 
 // Per-category card color system
 $card-colors: (
-  "blue": (
+  'blue': (
     bg: #eff6ff,
     icon-bg: #dbeafe,
     icon-color: #2563eb,
     hover-border: #93c5fd,
   ),
-  "green": (
+  'green': (
     bg: #f0fdf4,
     icon-bg: #dcfce7,
     icon-color: #16a34a,
     hover-border: #86efac,
   ),
-  "amber": (
+  'amber': (
     bg: #fffbeb,
     icon-bg: #fef3c7,
     icon-color: #d97706,
     hover-border: #fcd34d,
   ),
-  "purple": (
+  'purple': (
     bg: #faf5ff,
     icon-bg: #ede9fe,
     icon-color: #7c3aed,
     hover-border: #c4b5fd,
   ),
-  "teal": (
+  'teal': (
     bg: #f0fdfa,
     icon-bg: #ccfbf1,
     icon-color: #0d9488,
     hover-border: #5eead4,
   ),
-  "rose": (
+  'rose': (
     bg: #fff1f2,
     icon-bg: #ffe4e6,
     icon-color: #e11d48,

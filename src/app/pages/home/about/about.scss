@@ -1,0 +1,118 @@
+@use 'variables' as *;
+@use 'mixins' as *;
+
+.about {
+  background-color: $color-white;
+  @include section-padding;
+}
+
+.about__container {
+  @include container;
+}
+
+.about__eyebrow {
+  font-size: 0.8125rem;
+  font-weight: 700;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: $color-primary;
+  margin: 0 0 0.75rem;
+}
+
+.about__title {
+  font-size: clamp(1.875rem, 4vw, 2.75rem);
+  font-weight: 800;
+  letter-spacing: -0.02em;
+  color: $color-gray-900;
+  margin: 0 0 1.25rem;
+}
+
+.about__title-accent {
+  color: $color-primary;
+}
+
+.about__intro {
+  font-size: 1.125rem;
+  line-height: 1.7;
+  color: $color-gray-700;
+  max-width: 42rem;
+  margin: 0 0 3rem;
+}
+
+.about__grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 2.5rem;
+  align-items: start;
+
+  @include respond-to(md) {
+    grid-template-columns: 0.9fr 1.1fr;
+    gap: 3.5rem;
+  }
+}
+
+.about__photo {
+  width: 100%;
+  max-width: 24rem;
+  aspect-ratio: 1 / 1;
+  object-fit: cover;
+  border-radius: 1.5rem;
+  margin: 0 auto;
+  display: block;
+
+  @include respond-to(md) {
+    margin: 0;
+  }
+}
+
+.about__content {
+  display: flex;
+  flex-direction: column;
+  gap: 1.25rem;
+}
+
+.about__paragraph {
+  font-size: 1rem;
+  line-height: 1.75;
+  color: $color-gray-700;
+  margin: 0;
+}
+
+.about__actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1rem;
+  margin-top: 1rem;
+}
+
+.about__btn-contact {
+  display: inline-flex !important;
+  align-items: center !important;
+  color: $color-primary !important;
+  border-color: $color-primary !important;
+  font-weight: 600 !important;
+  padding: 0 1.5rem !important;
+  height: 2.75rem !important;
+  border-radius: 0.75rem !important;
+
+  &:hover {
+    background-color: rgba(37, 99, 235, 0.06) !important;
+  }
+}
+
+.about__btn-cv {
+  display: inline-flex !important;
+  align-items: center !important;
+  gap: 0.5rem !important;
+  background-color: $color-primary !important;
+  color: $color-white !important;
+  font-weight: 600 !important;
+  padding: 0 1.5rem !important;
+  height: 2.75rem !important;
+  border-radius: 0.75rem !important;
+  transition: background-color 0.2s ease !important;
+
+  &:hover {
+    background-color: $color-primary-dark !important;
+  }
+}

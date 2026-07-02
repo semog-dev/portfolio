@@ -1,9 +1,13 @@
 import { HttpClient } from '@angular/common/http';
 import { Component, inject, signal } from '@angular/core';
 import { email as emailValidator, FormField, form, required, submit } from '@angular/forms/signals';
-import { Github, Linkedin, LucideAngularModule, Mail } from 'lucide-angular';
+import { MatButtonModule } from '@angular/material/button';
+import { MatFormFieldModule } from '@angular/material/form-field';
+import { MatIconModule } from '@angular/material/icon';
+import { MatInputModule } from '@angular/material/input';
 import { firstValueFrom } from 'rxjs';
 import { contatoPage, socialLinks } from '../../shared/data/content';
+import { BrandIcon } from '../../shared/icons/brand-icon';
 
 interface ContatoModel {
   nome: string;
@@ -15,19 +19,22 @@ type Status = 'idle' | 'sending' | 'success' | 'error';
 
 @Component({
   selector: 'app-contato',
-  imports: [FormField, LucideAngularModule],
+  imports: [
+    FormField,
+    MatFormFieldModule,
+    MatInputModule,
+    MatButtonModule,
+    MatIconModule,
+    BrandIcon,
+  ],
   templateUrl: './contato.html',
-  styleUrl: './contato.css',
+  styleUrl: './contato.scss',
 })
 export class Contato {
   private readonly http = inject(HttpClient);
 
   protected readonly contatoPage = contatoPage;
   protected readonly socialLinks = socialLinks;
-
-  protected readonly MailIcon = Mail;
-  protected readonly GithubIcon = Github;
-  protected readonly LinkedinIcon = Linkedin;
 
   protected readonly status = signal<Status>('idle');
 
@@ -77,5 +84,9 @@ export class Contato {
     } else {
       this.status.set('error');
     }
+  }
+
+  protected reset(): void {
+    this.status.set('idle');
   }
 }

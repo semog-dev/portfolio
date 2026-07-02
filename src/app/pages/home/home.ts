@@ -8,6 +8,6 @@ import { Skills } from './skills/skills';
   selector: 'app-home',
   imports: [Hero, About, Experience, Skills],
   templateUrl: './home.html',
-  styleUrl: './home.css',
+  styleUrl: './home.scss',
 })
 export class Home {}

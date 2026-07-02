@@ -1,0 +1,46 @@
+@use 'variables' as *;
+
+.not-found {
+  display: flex;
+  min-height: 60vh;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 1rem;
+  padding: 2rem 1.5rem;
+  text-align: center;
+  background-color: $color-white;
+}
+
+.not-found__code {
+  font-size: clamp(3rem, 10vw, 6rem);
+  font-weight: 900;
+  letter-spacing: -0.03em;
+  line-height: 1;
+  color: $color-primary;
+}
+
+.not-found__title {
+  margin: 0;
+  font-size: clamp(1.5rem, 4vw, 2rem);
+  font-weight: 900;
+  letter-spacing: -0.03em;
+  color: $color-gray-900;
+}
+
+.not-found__description {
+  max-width: 28rem;
+  margin: 0;
+  color: $color-gray-700;
+  line-height: 1.6;
+}
+
+.not-found__cta {
+  margin-top: 0.5rem;
+  background-color: $color-primary !important;
+  color: $color-white !important;
+
+  mat-icon {
+    margin-right: 0.25rem;
+  }
+}

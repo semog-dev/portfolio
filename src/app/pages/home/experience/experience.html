@@ -1,20 +1,17 @@
-<section class="px-6 py-24 md:px-12">
-  <h2 class="font-display text-3xl font-black text-foreground md:text-5xl">Experiência</h2>
+<section class="experience">
+  <div class="experience__container">
+    <p class="experience__eyebrow">Trajetória</p>
+    <h2 class="experience__title">Experiência</h2>
 
-  <div class="mt-10 grid grid-cols-1 gap-6 md:grid-cols-2">
-    @for (exp of experiences; track exp.company) {
-      <article class="rounded-lg border border-border bg-surface p-6">
-        <div class="flex flex-wrap items-baseline justify-between gap-2">
-          <h3 class="font-display text-xl font-bold text-surface-foreground">{{ exp.company }}</h3>
-          <span class="text-sm text-muted-foreground">{{ exp.period }}</span>
-        </div>
-
-        <p class="mt-4 text-base text-surface-foreground">{{ exp.description }}</p>
-
-        <p class="mt-4 text-sm text-muted-foreground">
-          Tecnologias utilizadas: {{ exp.technologies }}
-        </p>
-      </article>
-    }
+    <div class="experience__grid">
+      @for (exp of experiences; track exp.company) {
+        <article class="experience-card">
+          <h3 class="experience-card__title">{{ exp.company }}</h3>
+          <p class="experience-card__period">{{ exp.period }}</p>
+          <p class="experience-card__description">{{ exp.description }}</p>
+          <p class="experience-card__tech">Tecnologias utilizadas: {{ exp.technologies }}</p>
+        </article>
+      }
+    </div>
   </div>
 </section>

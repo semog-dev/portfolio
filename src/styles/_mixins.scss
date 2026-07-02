@@ -1,5 +1,5 @@
-@use "sass:map";
-@use "variables" as *;
+@use 'sass:map';
+@use 'variables' as *;
 
 @mixin container {
   max-width: $container-max-width;
