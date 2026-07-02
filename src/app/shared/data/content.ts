@@ -1,7 +1,7 @@
 export const site = {
-  title: 'Portfolio Semog Dev',
+  title: 'Fernando Gomes — Desenvolvedor Fullstack .NET & Angular',
   description:
-    'Portfolio de Fernando Gomes (semog-dev), Desenvolvedor Fullstack com ênfase na plataforma .NET.',
+    'Portfolio de Fernando Gomes (semog-dev), Desenvolvedor Fullstack em São Paulo com foco na plataforma .NET e experiência também em Angular, Next.js e Flutter.',
 };
 
 export const socialLinks = {
@@ -20,18 +20,20 @@ export const hero = {
   greeting: 'Olá, meu nome é Fernando',
   headline: 'Desenvolvedor Fullstack com ênfase na plataforma',
   headlineAccent: '.NET',
+  subtitle:
+    'Do backend em C# e Delphi ao frontend em Angular — construo sistemas completos para quem precisa de software confiável no dia a dia.',
 };
 
 export const about = {
   title: 'Minha Jornada como',
   titleAccent: 'Desenvolvedor',
   intro:
-    'Eu sou Fernando Gomes, um Desenvolvedor Fullstack na cidade de São Paulo, dedicado a criar experiências digitais que não apenas são amigáveis ao usuário, mas também altamente eficientes.',
+    'Sou Fernando Gomes, Desenvolvedor Fullstack em São Paulo, com foco na plataforma .NET. Também trabalho com Angular, Next.js e Flutter, e gosto de acompanhar um projeto do banco de dados até a tela do usuário.',
   photo: '/images/foto.jpg',
   paragraphs: [
-    'Desde criança me interesso por computadores. Ao terminar o ensino médio, cursei Técnico em Informática com ênfase em programação na ETEC Albert Einstein, mas por motivos pessoais não concluí.',
-    'Alguns anos depois, retornei à ETEC para cursar Técnico em Eletrônica e consegui alguns trabalhos nessa área. Ainda assim, minha paixão pela programação falou mais alto e cursei Análise e Desenvolvimento de Sistemas na Faculdade Impacta.',
-    'Foi lá que conquistei minha primeira oportunidade, na Softclever, onde atuei por 6 meses como estagiário e 1 ano e meio como programador júnior, desenvolvendo e mantendo um ERP com Delphi e Firebird. Em seguida, ingressei na Integraltrust, onde atuo atualmente.',
+    'O interesse por computadores vem desde criança. Ao terminar o ensino médio, cursei Técnico em Informática com ênfase em programação na ETEC Albert Einstein, mas não pude concluir o curso por motivos pessoais.',
+    'Anos depois, voltei à ETEC para cursar Técnico em Eletrônica e cheguei a trabalhar nessa área. Mas a programação continuou puxando mais forte, e decidi cursar Análise e Desenvolvimento de Sistemas na Faculdade Impacta.',
+    'Foi durante a faculdade que consegui minha primeira oportunidade, na Soft Clever: 6 meses de estágio e mais 1 ano e meio como programador júnior, desenvolvendo e mantendo um ERP em Delphi e Firebird. Em seguida, ingressei na Integral Trust, onde atuo até hoje.',
   ],
   cvUrl: '/docs/curriculo.pdf',
 };
@@ -41,14 +43,14 @@ export const experiences = [
     company: 'Soft Clever',
     period: '06/2021 - 12/2022',
     description:
-      'Atuei como Desenvolvedor Delphi, criando soluções inteligentes para empresas (ERP).',
+      'Desenvolvedor Delphi responsável pela manutenção e evolução de um sistema ERP: novas funcionalidades, correções e ajustes de performance.',
     technologies: 'Delphi, Firebird, Datasnap, Asp.NET',
   },
   {
     company: 'Integral Trust',
     period: '12/2022 - atualmente',
     description:
-      'Atuo como Desenvolvedor Fullstack, criando soluções inteligentes para o FIDC (Fundo de investimento de direitos creditórios)',
+      'Desenvolvedor Fullstack em sistemas de gestão para FIDCs (Fundos de Investimento em Direitos Creditórios), do backend em .NET Core ao frontend em Angular.',
     technologies: '.NET Core, Asp.NET, Entity Framework, Angular, SQL Server',
   },
 ];
@@ -72,14 +74,15 @@ export const projetosPage = {
   eyebrow: 'Projetos',
   title: 'Meus projetos no',
   titleAccent: 'GitHub',
-  subtitle: 'Repositórios fixados no meu perfil',
+  subtitle: 'Uma seleção dos repositórios fixados no meu perfil.',
   emptyState: 'Nenhum projeto encontrado.',
   ctaLabel: 'Ver todos os projetos',
 };
 
 export const contatoPage = {
   title: 'Entre em Contato',
-  subtitle: 'Fale comigo para oportunidades, colaborações ou apenas para dizer olá 👋',
+  subtitle:
+    'Tem uma oportunidade, um projeto em mente ou só quer trocar uma ideia? Me manda uma mensagem 👋',
   submitLabel: 'Enviar mensagem',
   submittingLabel: 'Enviando...',
   successMessage: 'Mensagem enviada com sucesso!',
