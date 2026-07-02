@@ -7,7 +7,7 @@
   },
   "files": {
     "ignoreUnknown": true,
-    "includes": ["**", "!node_modules", "!.next", "!dist", "!build"]
+    "includes": ["**", "!node_modules", "!.angular", "!dist", "!.vercel"]
   },
   "formatter": {
     "enabled": true,
@@ -23,8 +23,7 @@
       }
     },
     "domains": {
-      "next": "recommended",
-      "react": "recommended"
+      "tailwind": "recommended"
     }
   },
   "assist": {
