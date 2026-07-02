@@ -5,46 +5,47 @@
         <a routerLink="/" class="footer__logo">
           SEMOG<span class="footer__logo-accent">DEV</span>
         </a>
-
-        <div class="footer__socials">
-          <a
-            [href]="socialLinks.github"
-            target="_blank"
-            rel="noopener noreferrer"
-            class="footer__social-link"
-            aria-label="GitHub"
-          >
-            <app-brand-icon name="github" [size]="20" />
-          </a>
-          <a
-            [href]="socialLinks.linkedin"
-            target="_blank"
-            rel="noopener noreferrer"
-            class="footer__social-link"
-            aria-label="LinkedIn"
-          >
-            <app-brand-icon name="linkedin" [size]="20" />
-          </a>
-          <a [href]="'mailto:' + socialLinks.email" class="footer__social-link" aria-label="E-mail">
-            <mat-icon>email</mat-icon>
-          </a>
-        </div>
+        <p class="footer__tagline">{{ tagline }}</p>
       </div>
 
-      <div class="footer__links">
+      <div class="footer__col">
         <h3 class="footer__heading">Links</h3>
         <nav class="footer__nav" aria-label="Links do rodapé">
           @for (item of navItems; track item.path) {
             <a [routerLink]="item.path" class="footer__link">{{ item.label }}</a>
           }
+          <a [href]="cvUrl" download target="_blank" rel="noopener" class="footer__link">
+            Baixar CV
+          </a>
         </nav>
+      </div>
+
+      <div class="footer__col">
+        <h3 class="footer__heading">Contato</h3>
+        <div class="footer__contacts">
+          <a class="footer__contact" [href]="'mailto:' + socialLinks.email">
+            <mat-icon>email</mat-icon>
+            <span>{{ socialLinks.email }}</span>
+          </a>
+          <a class="footer__contact" [href]="socialLinks.github" target="_blank" rel="noopener">
+            <app-brand-icon name="github" [size]="16" />
+            <span>GitHub</span>
+          </a>
+          <a class="footer__contact" [href]="socialLinks.linkedin" target="_blank" rel="noopener">
+            <app-brand-icon name="linkedin" [size]="16" />
+            <span>LinkedIn</span>
+          </a>
+        </div>
       </div>
     </div>
   </div>
 
   <div class="footer__bottom">
     <div class="footer__bottom-inner">
-      <p class="footer__copy">{{ footerText }}</p>
+      <p class="footer__copy">&copy; {{ year }} &middot; {{ footerText }}</p>
+      <a href="#top" class="footer__top-link" (click)="scrollToTop($event)"
+        >Voltar ao topo &uarr;</a
+      >
     </div>
   </div>
 </footer>
