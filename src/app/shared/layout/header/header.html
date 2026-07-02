@@ -1,17 +1,12 @@
 <header class="navbar" [class.navbar--scrolled]="useLightSkin()">
   <div class="navbar__inner">
-    <a routerLink="/" (click)="close()" class="navbar__logo">
+    <a href="#home" (click)="close()" class="navbar__logo">
       SEMOG<span class="navbar__logo-accent">DEV</span>
     </a>
 
     <nav class="navbar__links" aria-label="Navegação principal">
-      @for (item of navItems; track item.path) {
-        <a
-          [routerLink]="item.path"
-          routerLinkActive="navbar__link--active"
-          [routerLinkActiveOptions]="item.path === '/' ? { exact: true } : { exact: false }"
-          class="navbar__link"
-        >
+      @for (item of navItems; track item.anchor) {
+        <a [href]="'#' + item.anchor" class="navbar__link">
           {{ item.label }}
         </a>
       }
@@ -29,7 +24,7 @@
       <mat-icon>{{ themeService.theme() === 'dark' ? 'light_mode' : 'dark_mode' }}</mat-icon>
     </button>
 
-    <a mat-flat-button routerLink="/contato" class="navbar__cta">Fale comigo</a>
+    <a mat-flat-button href="#contato" class="navbar__cta">Fale comigo</a>
 
     <button
       type="button"
@@ -62,19 +57,13 @@
       </button>
     </div>
 
-    @for (item of navItems; track item.path) {
-      <a
-        [routerLink]="item.path"
-        routerLinkActive="navbar__drawer-link--active"
-        [routerLinkActiveOptions]="item.path === '/' ? { exact: true } : { exact: false }"
-        class="navbar__drawer-link"
-        (click)="close()"
-      >
+    @for (item of navItems; track item.anchor) {
+      <a [href]="'#' + item.anchor" class="navbar__drawer-link" (click)="close()">
         {{ item.label }}
       </a>
     }
 
-    <a mat-flat-button routerLink="/contato" class="navbar__drawer-cta" (click)="close()">
+    <a mat-flat-button href="#contato" class="navbar__drawer-cta" (click)="close()">
       Fale comigo
     </a>
 

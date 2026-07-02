@@ -6,8 +6,8 @@ import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatIconModule } from '@angular/material/icon';
 import { MatInputModule } from '@angular/material/input';
 import { firstValueFrom } from 'rxjs';
-import { contatoPage, socialLinks } from '../../shared/data/content';
-import { BrandIcon } from '../../shared/icons/brand-icon';
+import { contatoPage, socialLinks } from '../../../shared/data/content';
+import { BrandIcon } from '../../../shared/icons/brand-icon';
 
 interface ContatoModel {
   nome: string;

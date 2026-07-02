@@ -1,12 +1,11 @@
 import { Component } from '@angular/core';
 import { MatIconModule } from '@angular/material/icon';
-import { RouterLink } from '@angular/router';
 import { BrandIcon } from '../../icons/brand-icon';
 import { about, footerText, navItems, site, socialLinks } from '../../data/content';
 
 @Component({
   selector: 'app-footer',
-  imports: [RouterLink, MatIconModule, BrandIcon],
+  imports: [MatIconModule, BrandIcon],
   templateUrl: './footer.html',
   styleUrl: './footer.scss',
 })

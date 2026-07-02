@@ -11,9 +11,9 @@ export const socialLinks = {
 };
 
 export const navItems = [
-  { label: 'Início', path: '/' },
-  { label: 'Projetos', path: '/projetos' },
-  { label: 'Contato', path: '/contato' },
+  { label: 'Início', anchor: 'home' },
+  { label: 'Projetos', anchor: 'projetos' },
+  { label: 'Contato', anchor: 'contato' },
 ];
 
 export const hero = {

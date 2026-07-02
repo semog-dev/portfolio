@@ -2,14 +2,14 @@ import { toSignal } from '@angular/core/rxjs-interop';
 import { Component, HostListener, computed, inject, signal } from '@angular/core';
 import { MatButtonModule } from '@angular/material/button';
 import { MatIconModule } from '@angular/material/icon';
-import { NavigationEnd, Router, RouterLink, RouterLinkActive } from '@angular/router';
+import { NavigationEnd, Router } from '@angular/router';
 import { filter, map } from 'rxjs';
 import { navItems } from '../../data/content';
 import { ThemeService } from '../../services/theme.service';
 
 @Component({
   selector: 'app-header',
-  imports: [RouterLink, RouterLinkActive, MatButtonModule, MatIconModule],
+  imports: [MatButtonModule, MatIconModule],
   templateUrl: './header.html',
   styleUrl: './header.scss',
 })

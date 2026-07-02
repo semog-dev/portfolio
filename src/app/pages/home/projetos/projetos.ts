@@ -1,9 +1,9 @@
 import { Component, inject } from '@angular/core';
 import { MatButtonModule } from '@angular/material/button';
 import { MatIconModule } from '@angular/material/icon';
-import { projetosPage, socialLinks } from '../../shared/data/content';
-import { BrandIcon } from '../../shared/icons/brand-icon';
-import { ProjectsService } from '../../shared/services/projects.service';
+import { projetosPage, socialLinks } from '../../../shared/data/content';
+import { BrandIcon } from '../../../shared/icons/brand-icon';
+import { ProjectsService } from '../../../shared/services/projects.service';
 
 @Component({
   selector: 'app-projetos',

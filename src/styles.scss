@@ -59,3 +59,16 @@ html.dark body {
   --on-surface: light-dark(#111827, #f1f5f9);
   --on-surface-muted: light-dark(#374151, #94a3b8);
 }
+
+// Single-page: as seções são alvo de âncora (menu/rodapé/links internos).
+// A navbar é `position: fixed`, então sem isso o topo de cada seção fica
+// escondido atrás dela ao navegar direto para "#projetos"/"#contato" etc.
+app-hero,
+app-about,
+app-experience,
+app-skills,
+app-projetos,
+app-contato {
+  display: block;
+  scroll-margin-top: 5rem;
+}

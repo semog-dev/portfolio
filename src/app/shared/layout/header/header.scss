@@ -35,11 +35,6 @@
         color: var(--on-surface);
         background-color: var(--border-subtle);
       }
-
-      &--active {
-        color: $color-primary;
-        background-color: var(--border-subtle);
-      }
     }
 
     .navbar__cta {
@@ -96,11 +91,6 @@
   &:hover {
     color: $color-white;
     background-color: rgba(255, 255, 255, 0.1);
-  }
-
-  &--active {
-    color: $color-white;
-    background-color: rgba(255, 255, 255, 0.15);
   }
 }
 
@@ -189,11 +179,6 @@
 
   &:hover {
     color: var(--on-surface);
-    background-color: var(--border-subtle);
-  }
-
-  &--active {
-    color: $color-primary;
     background-color: var(--border-subtle);
   }
 }
