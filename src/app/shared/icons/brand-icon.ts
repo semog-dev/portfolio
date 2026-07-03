@@ -12,7 +12,7 @@ import { Component, input } from '@angular/core';
   // the icon a block box and forces a line break between it and sibling text
   // (e.g. inside a Material button's label). `inline-flex` on the host keeps
   // this component itself an atomic inline box, side by side with text.
-  host: { style: 'display: inline-flex; align-items: center;' },
+  host: { style: 'display: inline-flex; align-items: center; vertical-align: middle;' },
   template: `
     @switch (name()) {
       @case ('github') {
