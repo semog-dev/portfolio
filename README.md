@@ -1,6 +1,6 @@
-# Portfolio — Fernando Gomes (semog-dev)
+# Portfolio — Fernando Pereira (semog-dev)
 
-Site pessoal de portfólio de Fernando Gomes (semog-dev), construído com Angular 22 (SSR, zoneless, standalone components) e Tailwind CSS v4.
+Site pessoal de portfólio de Fernando Pereira (semog-dev), construído com Angular 22 (SSR, zoneless, standalone components) e Tailwind CSS v4.
 
 ## Sobre
 

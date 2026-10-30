@@ -7,8 +7,14 @@
       @for (exp of experiences; track exp.company) {
         <article class="experience-card">
           <h3 class="experience-card__title">{{ exp.company }}</h3>
+          <p class="experience-card__role">{{ exp.role }}</p>
           <p class="experience-card__period">{{ exp.period }}</p>
           <p class="experience-card__description">{{ exp.description }}</p>
+          <ul class="experience-card__highlights">
+            @for (item of exp.highlights; track item) {
+              <li>{{ item }}</li>
+            }
+          </ul>
           <p class="experience-card__tech">Tecnologias utilizadas: {{ exp.technologies }}</p>
         </article>
       }
