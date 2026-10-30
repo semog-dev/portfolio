@@ -3,8 +3,9 @@ import { skillGroups } from '../../../shared/data/content';
 
 const CATEGORY_COLOR_VARIANT: Record<string, string> = {
   Backend: 'blue',
-  Frontend: 'green',
-  Ferramentas: 'amber',
+  'Arquitetura e Testes': 'green',
+  'Cloud e Infra': 'amber',
+  Frontend: 'purple',
 };
 
 @Component({
